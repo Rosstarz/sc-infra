@@ -24,11 +24,15 @@
 			"ppa": true,
 			"version": "latest"
 		},
-		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
-		// "ghcr.io/devcontainers/features/python:1": {
-		// 	"version": "3.9.13"
-		// 	// "toolsToInstall": "pyodbc,pandas,requests,datetime"
-		// }
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.9.13"
+			// "toolsToInstall": "pyodbc,pandas,requests,datetime"
+		},
+		"ghcr.io/dhoeric/features/google-cloud-cli:1": {
+			"installGkeGcloudAuthPlugin": false
+		},
+		"ghcr.io/joshuanianji/devcontainer-features/gcloud-cli-persistence:1": {}
 	},
 
 	// "mounts": [
