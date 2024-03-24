@@ -1,0 +1,12 @@
+NAME               FSTYPE      FSVER    LABEL           UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+loop0                                                                                                0   100% /snap/core20/2105
+loop1              squashfs    4.0                                                                   0   100% /snap/snapd/20671
+loop2                                                                                                0   100% /snap/lxd/26741
+sda                                                                                                           
+├─sda1             ext4        1.0      cloudimg-rootfs 34062841-799a-47dd-a3e5-795f06780507      7.9G    19% /
+├─sda14                                                                                                       
+└─sda15            vfat        FAT32    UEFI            B6DE-F711                                98.3M     6% /boot/efi
+sdb                LVM2_member LVM2 001                 RbQxkQ-WP6z-V40u-6yR3-iz2Z-tcrj-uCMkyC                
+└─ross0-savedgames xfs                                  73f3389f-d3a8-4d4e-985e-5d232fda6475      466M     6% /home/ross/savedgames
+sdc                LVM2_member LVM2 001                 A8GdtO-joH7-Td0V-aQwb-8iA4-DGh0-qUA4bn                
+sr0                iso9660              cidata          2024-02-18-19-23-26-00                                

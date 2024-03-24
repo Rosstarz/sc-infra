@@ -1,0 +1,8 @@
+Filesystem                    Size  Used Avail Use% Mounted on
+/dev/root                     9.8G  1.9G  7.9G  19% /
+tmpfs                         2.0G     0  2.0G   0% /dev/shm
+tmpfs                         790M  584K  789M   1% /run
+tmpfs                         5.0M     0  5.0M   0% /run/lock
+/dev/sda15                    105M  6.1M   99M   6% /boot/efi
+tmpfs                         395M  4.0K  395M   1% /run/user/1000
+/dev/mapper/ross0-savedgames  1.5G   37M  1.5G   3% /home/ross/savedgames

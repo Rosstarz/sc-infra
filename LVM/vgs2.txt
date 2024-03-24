@@ -1,0 +1,2 @@
+  VG    #PV #LV #SN Attr   VSize   VFree 
+  ross0   3   1   0 wz--n- <14.99g 13.50g
