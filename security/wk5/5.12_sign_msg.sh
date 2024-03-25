@@ -20,3 +20,14 @@
 # Your message must be readable/visible in the signed message.
 
 ###################
+
+
+# openssl pkeyutl \
+#     -encrypt -inkey pubkey.pem \
+#     -pubin -in top_secret.txt -out top_secret.enc
+
+openssl smime \
+    -sign \
+    -keyform PEM \
+    -in top_secret.txt -out mesg.signed -outform smime \
+    -inkey privkey.pem -signer cert.pem

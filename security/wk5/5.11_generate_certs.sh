@@ -12,3 +12,13 @@
 
 ###################
 
+openssl genrsa -out privkey.pem 4092
+openssl rsa -in privkey.pem -pubout -out pubkey.pem
+openssl req \
+    -outform PEM -nodes \
+    -key privkey.pem \
+    -x509 -days 365 -out cert.pem \
+    -subj "/C=US/ST=New York/L=Brooklyn/O=Brooklyn Company/CN=Rostislav Rucka/emailAddress=rostislav.rucka@student.kdg.be"
+
+# openssl x509 -inform DER -outform PEM -in cert.crt -out cert.crt.pem
+# openssl rsa -inform DER -outform PEM -in privkey.key -out privkey.key.pem
