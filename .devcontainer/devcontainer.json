@@ -31,8 +31,8 @@
 		},
 		"ghcr.io/dhoeric/features/google-cloud-cli:1": {
 			"installGkeGcloudAuthPlugin": false
-		},
-		"ghcr.io/joshuanianji/devcontainer-features/gcloud-cli-persistence:1": {}
+		}
+		// "ghcr.io/joshuanianji/devcontainer-features/gcloud-cli-persistence:1": {}
 	},
 
 	// "mounts": [
