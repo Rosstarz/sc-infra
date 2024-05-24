@@ -15,11 +15,6 @@
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
 	"features": {
-		// "ghcr.io/devcontainers/features/java:1": {
-		// 	"version": "latest",
-		// 	"installMaven": "false",
-		// 	"installGradle": "false"
-		// },
 		"ghcr.io/devcontainers/features/git:1": {
 			"ppa": true,
 			"version": "latest"
@@ -29,10 +24,8 @@
 			"version": "3.9.13"
 			// "toolsToInstall": "pyodbc,pandas,requests,datetime"
 		},
-		"ghcr.io/dhoeric/features/google-cloud-cli:1": {
-			"installGkeGcloudAuthPlugin": false
-		}
-		// "ghcr.io/joshuanianji/devcontainer-features/gcloud-cli-persistence:1": {}
+		"ghcr.io/dhoeric/features/google-cloud-cli:1": {},
+		"ghcr.io/joshuanianji/devcontainer-features/gcloud-cli-persistence:1": {}
 	},
 
 	// "mounts": [
@@ -49,7 +42,8 @@
 			"extensions": [
 				"bierner.markdown-preview-github-styles",
 				"foxundermoon.shell-format",
-                "googlecloudtools.cloudcode"
+				"googlecloudtools.cloudcode",
+				"ShahilKumar.docxreader"
 			]
 		}
 	},
