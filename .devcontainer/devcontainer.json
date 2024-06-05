@@ -25,7 +25,8 @@
 			// "toolsToInstall": "pyodbc,pandas,requests,datetime"
 		},
 		"ghcr.io/dhoeric/features/google-cloud-cli:1": {},
-		"ghcr.io/joshuanianji/devcontainer-features/gcloud-cli-persistence:1": {}
+		"ghcr.io/joshuanianji/devcontainer-features/gcloud-cli-persistence:1": {},
+		"ghcr.io/devcontainers/features/terraform:1": {}
 	},
 
 	// "mounts": [
@@ -43,10 +44,13 @@
 				"bierner.markdown-preview-github-styles",
 				"foxundermoon.shell-format",
 				"googlecloudtools.cloudcode",
-				"ShahilKumar.docxreader"
+				"ShahilKumar.docxreader",
+				"matheusq94.TFS",
+				"hashicorp.terraform"
 			]
 		}
 	},
+	
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "vscode",
 
