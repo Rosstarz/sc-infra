@@ -14,6 +14,7 @@
     // "shutdownAction": "stopCompose",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
+	// https://containers.dev/features
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {
 			"ppa": true,
@@ -26,7 +27,8 @@
 		},
 		"ghcr.io/dhoeric/features/google-cloud-cli:1": {},
 		"ghcr.io/joshuanianji/devcontainer-features/gcloud-cli-persistence:1": {},
-		"ghcr.io/devcontainers/features/terraform:1": {}
+		"ghcr.io/devcontainers/features/terraform:1": {},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {}
 	},
 
 	"mounts": [
@@ -46,7 +48,8 @@
 				"googlecloudtools.cloudcode",
 				"ShahilKumar.docxreader",
 				"matheusq94.TFS",
-				"hashicorp.terraform"
+				"hashicorp.terraform",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
 			]
 		}
 	},
@@ -58,5 +61,7 @@
 	// "initializeCommand": "bash .devcontainer/initializeCommand.sh",
 	
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh"
+	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+
+	"runArgs": ["--name", "sc-infra"]
 }

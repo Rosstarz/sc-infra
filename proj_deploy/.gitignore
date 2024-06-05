@@ -1,3 +1,7 @@
 .creds/
-.terraform/*
+
+# Terraform
+*.terraform*
 *terraform.tfstate*
+*.terraform.tfstate.lock.info*
+*.tfvars*
