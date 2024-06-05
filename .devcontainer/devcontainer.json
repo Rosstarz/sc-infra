@@ -29,10 +29,10 @@
 		"ghcr.io/devcontainers/features/terraform:1": {}
 	},
 
-	// "mounts": [
-		// "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,readonly,type=bind"
+	"mounts": [
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind"
 		// "source=vscode-extensions,target=/root/.vscode-server-insiders/extensions,type=volume"
-	// ],
+	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
