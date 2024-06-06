@@ -13,8 +13,10 @@ terraform {
 
 # Retrieve GKE cluster information
 provider "google" {
-  project = var.project_id
-  region  = var.region
+  project     = var.project_id
+  region      = var.region
+  zone        = var.zone
+  credentials = file(join("/", [var.project_root, var.gcp_sa_credentials]))
 }
 
 # Configure kubernetes provider with Oauth2 access token.

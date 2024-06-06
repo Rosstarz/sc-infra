@@ -46,7 +46,7 @@ variable "gke_num_nodes" {
 
 variable "postgres_db" {
   type    = string
-  default = "postgres"
+  default = "prog5"
 }
 
 variable "postgres_user" {
@@ -57,4 +57,9 @@ variable "postgres_user" {
 variable "postgres_password" {
   type    = string
   default = "postgres"
+}
+
+variable "gitlab_secret_file" {
+  type    = string
+  default = "~/.docker/config2.json"
 }

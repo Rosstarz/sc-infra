@@ -5,7 +5,8 @@
 # }
 
 resource "google_container_cluster" "primary" {
-  name                = "${var.project_name}-gke"
+  name = "${var.project_name}-gke"
+  # Zone specified over region to avoid master nodes across all zones
   location            = var.zone
   deletion_protection = false
 
