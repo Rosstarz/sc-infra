@@ -58,3 +58,8 @@ variable "postgres_password" {
   type    = string
   default = "postgres"
 }
+
+variable "postgres_port" {
+  type    = number
+  default = 5432
+}

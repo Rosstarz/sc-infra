@@ -29,6 +29,10 @@ data "google_container_cluster" "primary" {
   location = var.zone
 }
 
+data "google_sql_database_instance" "main" {
+  name = "db1"
+}
+
 provider "kubernetes" {
   host = "https://${data.google_container_cluster.primary.endpoint}"
 

@@ -18,6 +18,7 @@ resource "google_container_cluster" "primary" {
 
   network    = google_compute_network.vpc.name
   subnetwork = google_compute_subnetwork.subnet.name
+  depends_on = [google_service_networking_connection.private_vpc_connection]
 }
 
 # Separately Managed Node Pool

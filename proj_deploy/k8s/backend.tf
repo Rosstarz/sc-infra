@@ -1,15 +1,3 @@
-# resource "kubernetes_secret" "gitlab-registry" {
-#   metadata {
-#     name = "gitlab-registry"
-#   }
-
-#   data = {
-#     ".dockerconfigjson" = "${file("${var.gitlab_secret_file}")}"
-#   }
-
-#   type = "kubernetes.io/dockerconfigjson"
-# }
-
 resource "kubernetes_deployment" "backend" {
   metadata {
     name = "backend-app"
@@ -33,7 +21,6 @@ resource "kubernetes_deployment" "backend" {
       }
       spec {
         image_pull_secrets {
-          # name = kubernetes_secret.gitlab-registry.metadata.0.name
           name = "gitlab-registry"
         }
         container {
@@ -44,25 +31,51 @@ resource "kubernetes_deployment" "backend" {
             container_port = 80
           }
 
-          resources {
-            limits = {
-              cpu    = "0.5"
-              memory = "512Mi"
-            }
-            requests = {
-              cpu    = "250m"
-              memory = "50Mi"
-            }
+          env {
+            name  = "DB_ADDRESS"
+            value = data.google_sql_database_instance.main.private_ip_address
           }
+
+          env {
+            name  = "DB_NAME"
+            value = var.postgres_db
+          }
+
+          env {
+            name  = "DB_PORT"
+            value = var.postgres_port
+          }
+
+          env {
+            name  = "DB_USERNAME"
+            value = var.postgres_user
+          }
+
+          env {
+            name  = "DB_PASSWORD"
+            value = var.postgres_password
+          }
+
+          # resources {
+          #   limits = {
+          #     cpu    = "0.5"
+          #     memory = "512Mi"
+          #   }
+          #   requests = {
+          #     cpu    = "250m"
+          #     memory = "50Mi"
+          #   }
+          # }
         }
       }
     }
   }
 }
 
-resource "kubernetes_service" "backend-lb" {
+// Persistent IP address for the backend service
+resource "kubernetes_service" "backend-svc" {
   metadata {
-    name = "backend-lb"
+    name = "backend-svc"
   }
   spec {
     selector = {
@@ -72,11 +85,28 @@ resource "kubernetes_service" "backend-lb" {
       port        = 80
       target_port = 80
     }
+    type = "ClusterIP"
+  }
+}
+
+// Loadbalancer only because the backend app contains some frontend as well
+resource "kubernetes_service" "backend-lb" {
+  metadata {
+    name = "backend-lb"
+  }
+  spec {
+    selector = {
+      App = kubernetes_deployment.backend.spec.0.template.0.metadata[0].labels.App
+    }
+    port {
+      port        = 81
+      target_port = 80
+    }
 
     type = "LoadBalancer"
   }
 }
 
-output "lb_ip" {
+output "backend-lb-ip" {
   value = kubernetes_service.backend-lb.status.0.load_balancer.0.ingress.0.ip
 }

@@ -59,7 +59,7 @@ variable "postgres_password" {
   default = "postgres"
 }
 
-variable "gitlab_secret_file" {
+variable "postgres_port" {
   type    = string
-  default = "~/.docker/config2.json"
+  default = "5432"
 }
