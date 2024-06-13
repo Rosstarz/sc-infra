@@ -11,7 +11,7 @@
 
 #   # Generate a new certificate if Terraform is run within three
 #   # hours of the certificate's expiration time.
-#   early_renewal_hours = 3
+#   #   early_renewal_hours = 3
 
 #   # Reasonable set of uses for a server SSL certificate.
 #   allowed_uses = [
@@ -20,10 +20,23 @@
 #     "server_auth",
 #   ]
 
-#   dns_names = ["example.com", "example.net"]
+#   #   dns_names = ["example.com", "example.net"]
 
 #   subject {
 #     common_name  = "example.com"
 #     organization = "ACME Examples, Inc"
 #   }
+# }
+
+# resource "kubernetes_secret" "certificate" {
+#   metadata {
+#     name = "certificate"
+#   }
+
+#   data = {
+#     username = "admin"
+#     password = "P4ssw0rd"
+#   }
+
+#   type = "kubernetes.io/basic-auth"
 # }

@@ -56,6 +56,11 @@ resource "kubernetes_deployment" "backend" {
             value = var.postgres_password
           }
 
+          env {
+            name  = "TEMP"
+            value = var.postgres_password
+          }
+
           # resources {
           #   limits = {
           #     cpu    = "0.5"
@@ -99,7 +104,7 @@ resource "kubernetes_service" "backend-lb" {
       App = kubernetes_deployment.backend.spec.0.template.0.metadata[0].labels.App
     }
     port {
-      port        = 81
+      port        = 80
       target_port = 80
     }
 
@@ -109,4 +114,8 @@ resource "kubernetes_service" "backend-lb" {
 
 output "backend-lb-ip" {
   value = kubernetes_service.backend-lb.status.0.load_balancer.0.ingress.0.ip
+}
+
+output "backend-svc-ip" {
+  value = kubernetes_service.backend-svc.spec.0.cluster_ip
 }

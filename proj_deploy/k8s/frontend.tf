@@ -21,10 +21,10 @@ resource "kubernetes_deployment" "frontend" {
       }
       spec {
         image_pull_secrets {
-          name = "gitlab-registry"
+          name = "gitlab-registry-client"
         }
         container {
-          image = "registry.gitlab.com/kdg-ti/programming-5/projects-23-24/acs202/rostislav.rucka/programming-5/client"
+          image = "registry.gitlab.com/kdg-ti/programming-5/projects-23-24/acs202/rostislav.rucka/client"
           name  = "prog5-client-app"
 
           port {
@@ -33,7 +33,12 @@ resource "kubernetes_deployment" "frontend" {
 
           env {
             name  = "PROG5_BACKEND_URL"
-            value = "http://${kubernetes_service.backend-svc.metadata.0.name}"
+            value = "http://${kubernetes_service.backend-lb.status.0.load_balancer.0.ingress.0.ip}:80"
+          }
+
+          env {
+            name  = "TEMP"
+            value = var.postgres_password
           }
 
           # resources {
@@ -62,7 +67,7 @@ resource "kubernetes_service" "frontend-lb" {
     }
 
     port {
-      port        = 82
+      port        = 80
       target_port = 9000
     }
 
@@ -74,19 +79,19 @@ output "frontend-lb-ip" {
   value = kubernetes_service.frontend-lb.status.0.load_balancer.0.ingress.0.ip
 }
 
-resource "kubernetes_service" "frontend-np" {
-  metadata {
-    name = "frontend-np"
-  }
-  spec {
-    selector = {
-      App = kubernetes_deployment.frontend.spec.0.template.0.metadata[0].labels.App
-    }
-    port {
-      port        = 80
-      target_port = 9000
-      protocol    = "TCP"
-    }
-    type = "NodePort"
-  }
-}
+# resource "kubernetes_service" "frontend-np" {
+#   metadata {
+#     name = "frontend-np"
+#   }
+#   spec {
+#     selector = {
+#       App = kubernetes_deployment.frontend.spec.0.template.0.metadata[0].labels.App
+#     }
+#     port {
+#       port        = 80
+#       target_port = 9000
+#       protocol    = "TCP"
+#     }
+#     type = "NodePort"
+#   }
+# }
